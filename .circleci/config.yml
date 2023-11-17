@@ -66,6 +66,7 @@ jobs:
     executor: currents-executor
     steps:
       - cypress/install
+          cypress-cache-key: some
       - persist_to_workspace:
           root: ~/
           paths:
@@ -80,24 +81,21 @@ jobs:
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 workflows:
-  # noorbs:
-  #   jobs:
-  #     - noorbs currents-image:
-  #         context: currents
-  #     - noorbs explicit-download:
-  #         context: currents
-  # with-orbs default-executor:
-  #   jobs:
-  #     - default-executor cypress-install
-  #     - default-executor cypress-run:
-  #         context: currents
-  #         requires:
-  #           - default-executor cypress-install
+  noorbs:
+    jobs:
+      - noorbs currents-image:
+          context: currents
+      - noorbs explicit-download:
+          context: currents
+  with-orbs default-executor:
+    jobs:
+      - default-executor cypress-install
+      - default-executor cypress-run:
+          context: currents
+          requires:
+            - default-executor cypress-install
 
   with-orbs custom-executor:
     jobs:
-      # - custom-executor cypress-install
       - custom-executor cypress-run:
           context: currents
-          # requires:
-          #   - custom-executor cypress-install
