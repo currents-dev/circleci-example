@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "cypress": "^12.8.1",
-    "cypress-cloud": "^1.5.5",
+    "cypress": "^12.17.4",
+    "cypress-cloud": "^1.9.6",
     "typescript": "^5.0.2"
   }
 }
