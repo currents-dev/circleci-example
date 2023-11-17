@@ -5,9 +5,7 @@ orbs:
 
 jobs:
   cypress-run:
-    executor:
-      docker:
-        image: currents/cypress-included:12.17.4
+    executor: currents/cypress-included:12.17.4
     parallelism: 3
     steps:
       - cypress/run-tests:
