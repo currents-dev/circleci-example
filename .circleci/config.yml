@@ -12,8 +12,7 @@ jobs:
   cypress-install:
     executor: currents-executor
     steps:
-      - cypress/install:
-          install-browsers: true
+      - cypress/install
       - persist_to_workspace:
           root: ~/
           paths:
