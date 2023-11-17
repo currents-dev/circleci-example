@@ -6,15 +6,6 @@ executor:
     image: currents/cypress-included:12.17.4
 
 jobs:
-  cypress-install:
-    steps:
-      - cypress/install
-      - persist_to_workspace:
-          paths:
-            - .cache/Cypress
-            - project
-          root: ~/
-
   cypress-run:
     parallelism: 3
     steps:
