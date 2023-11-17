@@ -3,17 +3,8 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
-jobs:
-  cypress-run:
-    executor: cypress/default
-    parallelism: 3
-    steps:
-      - attach_workspace:
-          at: ~/
-      - cypress/run
-
 workflows:
   build:
     jobs:
-      - cypress-run:
+      - cypress/run:
           context: currents
