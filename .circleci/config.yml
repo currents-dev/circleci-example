@@ -65,12 +65,10 @@ jobs:
   custom-executor cypress-install:
     executor: currents-executor
     steps:
-      - cypress/install:
-          post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+      - cypress/install
       - persist_to_workspace:
           root: ~/
           paths:
-            - .cache/Cypress
             - project
 
   custom-executor cypress-run:
@@ -88,7 +86,7 @@ workflows:
   #         context: currents
   #     - noorbs explicit-download:
   #         context: currents
-  # with-orbs-default-executor:
+  # with-orbs default-executor:
   #   jobs:
   #     - default-executor cypress-install
   #     - default-executor cypress-run:
@@ -96,7 +94,7 @@ workflows:
   #         requires:
   #           - default-executor cypress-install
 
-  with-orbs-custom-executor:
+  with-orbs custom-executor:
     jobs:
       - custom-executor cypress-install
       - custom-executor cypress-run:
