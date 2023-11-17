@@ -96,8 +96,8 @@ workflows:
 
   with-orbs custom-executor:
     jobs:
-      - custom-executor cypress-install
+      # - custom-executor cypress-install
       - custom-executor cypress-run:
           context: currents
-          requires:
-            - custom-executor cypress-install
+          # requires:
+          #   - custom-executor cypress-install
