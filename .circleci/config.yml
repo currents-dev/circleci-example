@@ -17,8 +17,5 @@ jobs:
 workflows:
   build:
     jobs:
-      - cypress-install
       - cypress-run:
           context: currents
-          requires:
-            - cypress-install
