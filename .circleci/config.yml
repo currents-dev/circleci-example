@@ -23,6 +23,8 @@ jobs:
     executor: currents-executor
     parallelism: 3
     steps:
+      - attach_workspace:
+          at: ~/
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
