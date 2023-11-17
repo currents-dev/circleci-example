@@ -59,4 +59,4 @@ workflows:
       - default-executor cypress-run:
           context: currents
           requires:
-            - cypress-install
+            - default-executor cypress-install
