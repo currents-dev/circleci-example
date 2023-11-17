@@ -49,14 +49,14 @@ jobs:
 workflows:
   noorbs:
     jobs:
-      - noorbs-test-currents-image:
+      - noorbs currents-image:
           context: currents
-      - noorbs-test-explicit-download:
+      - noorbs explicit-download:
           context: currents
   with-orbs:
     jobs:
-      - default-executor:cypress-install
-      - default-executor:cypress-run:
+      - default-executor cypress-install
+      - default-executor cypress-run:
           context: currents
           requires:
             - cypress-install
