@@ -2,7 +2,8 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 executor:
-  docker: currents/cypress-included:12.17.4
+  docker:
+    image: currents/cypress-included:12.17.4
 
 jobs:
   cypress-install:
