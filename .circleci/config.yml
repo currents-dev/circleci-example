@@ -9,18 +9,11 @@ jobs:
     steps:
       - cypress/install:
           post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - .cache/Cypress
-            - project
 
   cypress-run:
     executor: cypress/default
     parallelism: 3
     steps:
-      - attach_workspace:
-          at: ~/
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
