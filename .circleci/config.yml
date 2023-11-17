@@ -6,7 +6,7 @@ orbs:
 executors:
   currents-executor:
     docker:
-      image: currents/cypress-included:12.17.4
+      - image: currents/cypress-included:12.17.4
 
 jobs:
   cypress-run:
