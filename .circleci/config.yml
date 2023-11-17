@@ -3,12 +3,11 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
-executor:
-  docker:
-    image: currents/cypress-included:12.17.4
-
 jobs:
   cypress-run:
+    executor:
+      docker:
+        image: currents/cypress-included:12.17.4
     parallelism: 3
     steps:
       - cypress/run-tests:
