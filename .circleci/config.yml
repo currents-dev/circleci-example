@@ -61,12 +61,11 @@ jobs:
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
-  # Use currentsdev executor with pre-installed Cypress binary
+  # Use currentsdev executor with pre-installed Cypress App binary
   custom-executor cypress-install:
     executor: currents-executor
     steps:
-      - cypress/install:
-          cypress-cache-key: some
+      - cypress/install
       - persist_to_workspace:
           root: ~/
           paths:
@@ -80,6 +79,7 @@ jobs:
           at: ~/
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+
 workflows:
   noorbs:
     jobs:
