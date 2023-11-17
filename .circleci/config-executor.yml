@@ -15,9 +15,6 @@ jobs:
       - cypress/install
       - persist_to_workspace:
           root: ~/
-          paths:
-            - .cache/Cypress
-            - project
 
   cypress-run:
     executor: currents-executor
