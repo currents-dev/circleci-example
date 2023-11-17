@@ -15,7 +15,7 @@ jobs:
   noorbs-test-explicit-download:
     parallelism: 3
     docker:
-      - image: cypress/base:18
+      - image: cypress/base:18.16.1
     steps:
       - checkout
       - run:
