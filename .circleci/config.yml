@@ -8,11 +8,11 @@ executor:
     image: currents/cypress-included:12.17.4
 
 jobs:
-  - cypress-run:
-      parallelism: 3
-      steps:
-        - cypress/run-tests:
-            cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+  cypress-run:
+    parallelism: 3
+    steps:
+      - cypress/run-tests:
+          cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
 workflows:
   build:
