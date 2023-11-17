@@ -3,6 +3,11 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
+executors:
+  currents-executor:
+    docker:
+      - image: currentsdev/cypress-included:12.17.4
+
 jobs:
   noorbs-test-currents-image:
     parallelism: 3
@@ -23,18 +28,21 @@ jobs:
           command: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
       - run: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
-  cypress-install:
+  # Default executor example
+  default-executor:cypress-install:
     executor: cypress/default
     steps:
       - cypress/install:
           post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
 
-  cypress-run:
+  default-executor:cypress-run:
     executor: cypress/default
     parallelism: 3
     steps:
       - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+
+  # Custom executor example
 
 workflows:
   noorbs:
@@ -45,8 +53,8 @@ workflows:
           context: currents
   with-orbs:
     jobs:
-      - cypress-install
-      - cypress-run:
+      - default-executor:cypress-install
+      - default-executor:cypress-run:
           context: currents
           requires:
             - cypress-install
