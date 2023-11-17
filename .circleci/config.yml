@@ -4,13 +4,12 @@ orbs:
   cypress: cypress-io/cypress@3
 
 jobs:
-  # cypress-install:
-  #   executor: cypress/default
-  #   steps:
-  #     - cypress/install:
-  #         post-install:
-  #     - persist_to_workspace:
-  #         root: ~/
+  cypress-install:
+    executor: cypress/default
+    steps:
+      - cypress/install
+      - persist_to_workspace:
+          root: ~/
 
   cypress-run:
     executor: cypress/default
@@ -18,15 +17,14 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - cypress/run:
-          post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+      - cypress/run-tests:
           cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
 workflows:
   build:
     jobs:
-      # - cypress-install
+      - cypress-install
       - cypress-run:
           context: currents
-          # requires:
-          #   - cypress-install
+          requires:
+            - cypress-install
