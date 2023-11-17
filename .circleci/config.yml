@@ -16,7 +16,12 @@ jobs:
       - image: currentsdev/cypress-included:12.17.4
     steps:
       - checkout
-      - run: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+      - run:
+          name: Install Dependencies
+          command: npm ci
+      - run:
+          name: Run tests
+          command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
   # Explicitly download Cypress binary
   noorbs explicit-download:
@@ -26,9 +31,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
           name: Install Cypress
           command: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
-      - run: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+      - run:
+          name: Run tests
+          command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
 
   # Default executor example
   default-executor cypress-install:
