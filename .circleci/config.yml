@@ -57,12 +57,12 @@ jobs:
   # Custom executor example
 
 workflows:
-  noorbs:
-    jobs:
-      - noorbs currents-image:
-          context: currents
-      - noorbs explicit-download:
-          context: currents
+  # noorbs:
+  #   jobs:
+  #     - noorbs currents-image:
+  #         context: currents
+  #     - noorbs explicit-download:
+  #         context: currents
   with-orbs:
     jobs:
       - default-executor cypress-install
