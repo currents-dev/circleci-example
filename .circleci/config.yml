@@ -65,7 +65,7 @@ jobs:
   custom-executor cypress-install:
     executor: currents-executor
     steps:
-      - cypress/install
+      - cypress/install:
           cypress-cache-key: some
       - persist_to_workspace:
           root: ~/
