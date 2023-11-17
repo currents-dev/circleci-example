@@ -3,8 +3,29 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
+jobs:
+  cypress-install:
+    executor: cypress/default
+    steps:
+      - cypress/install:
+          post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+      - persist_to_workspace:
+          root: ~/
+
+  cypress-run:
+    executor: cypress/default
+    parallelism: 3
+    steps:
+      - attach_workspace:
+          at: ~/
+      - cypress/run-tests:
+          cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+
 workflows:
   build:
     jobs:
-      - cypress/run:
+      - cypress-install
+      - cypress-run:
           context: currents
+          requires:
+            - cypress-install
