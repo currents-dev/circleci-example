@@ -3,14 +3,12 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
-
 jobs:
   cypress-install:
     executor: cypress/default
     steps:
-      - cypress/install
-          post-install: 
-            CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
+      - cypress/install:
+          post-install: CYPRESS_DOWNLOAD_MIRROR=https://cy-cdn.currents.dev npx cypress install --force
       - persist_to_workspace:
           root: ~/
 
