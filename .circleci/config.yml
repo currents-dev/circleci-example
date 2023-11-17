@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
+executor:
+  docker: currents/cypress-included:12.17.4
 
 jobs:
   cypress-install:
-    executor:
-      docker: currents/cypress-included:12.17.4
     steps:
       - cypress/install
       - persist_to_workspace:
@@ -15,8 +15,6 @@ jobs:
           root: ~/
 
   cypress-run:
-    executor:
-      docker: currents/cypress-included:12.17.4
     parallelism: 3
     steps:
       - attach_workspace:
