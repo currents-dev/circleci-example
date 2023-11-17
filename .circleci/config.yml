@@ -10,8 +10,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - cypress/run:
-          cypress-command: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
+      - cypress/run
 
 workflows:
   build:
