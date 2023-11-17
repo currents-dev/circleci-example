@@ -13,7 +13,7 @@ jobs:
   noorbs currents-image:
     parallelism: 3
     docker:
-      - image: currents/cypress-included:12.17.4
+      - image: currentsdev/cypress-included:12.17.4
     steps:
       - checkout
       - run: npx cypress-cloud run --parallel --record --key $CURRENTS_RECORD_KEY
