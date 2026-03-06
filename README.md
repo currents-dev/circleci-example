@@ -1,3 +1,14 @@
+# ⚠️ ARCHIVED REPOSITORY ⚠️
+
+> **This repository is now archived and read-only.**
+>
+> For the latest examples and updates, please visit our new repository:
+>
+> # [👉 https://github.com/currents-dev/currents-examples](https://github.com/currents-dev/currents-examples/tree/main/cypress/circleci)
+
+---
+
+
 # Currents.dev - CircleCI Example
 
 This is an example repository that showcases using [CircleCI](https://circleci.com) with [Currents.dev](https://currents.dev).
